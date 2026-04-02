@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Social Media Manager & Data Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .data-card { background: #1a1a1a; border: 1px solid #333; }
+        .social-card { background: #ffffff; border: 1px solid #e5e7eb; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <nav class="p-6 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
+        <h1 class="text-xl font-bold tracking-tighter">BRAND NAME</h1>
+        <div class="space-x-6">
+            <a href="#social" class="hover:text-blue-600 transition">Social Media</a>
+            <a href="#data" class="hover:text-blue-600 transition">Data Analysis</a>
+            <a href="YOUR_GITHUB_URL_HERE" target="_blank" class="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="py-20 px-6 text-center">
+        <h2 class="text-5xl font-extrabold mb-4">I translate engagement into <span class="text-blue-600">insights.</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg">Social Media Strategist & Data Analyst helping brands grow through creative content and rigorous data validation.</p>
+    </header>
+
+    <section id="social" class="py-16 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold mb-10">Social Media Strategy</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="social-card p-4 rounded-xl shadow-sm">
+                    <div class="h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center text-gray-400 italic">Campaign Screenshot</div>
+                    <h4 class="font-bold text-lg">Campaign: Kenya Growth 2026</h4>
+                    <p class="text-sm text-gray-500 mt-2">Increased organic reach by 45% over 3 months using targeted local trends.</p>
+                </div>
+                <div class="social-card p-4 rounded-xl shadow-sm">
+                    <div class="h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center text-gray-400 italic">Campaign Screenshot</div>
+                    <h4 class="font-bold text-lg">Brand Identity Refresh</h4>
+                    <p class="text-sm text-gray-500 mt-2">Full social audit and aesthetic pivot for a major tech hub.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data" class="py-16 px-6 bg-black text-white">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold mb-10 text-blue-400">Analytical Insights</h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="data-card p-6 rounded-xl">
+                    <h4 class="text-lg font-semibold mb-4">Performance Metrics (Live)</h4>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h4 class="text-2xl font-bold mb-4">KPI Dashboarding</h4>
+                    <p class="text-gray-400 mb-6">I specialize in turning messy CSV/Excel data into actionable Power BI or Python-based visualizations. This live chart demonstrates a typical engagement-over-time analysis.</p>
+                    <ul class="space-y-2 text-sm text-blue-300">
+                        <li>• SQL / Python / Excel Proficiency</li>
+                        <li>• Predictive Sentiment Analysis</li>
+                        <li>• ROI Attribution Modeling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-400 text-sm">
+        <p>© 2026 Brand Portfolio | Built with Tailwind CSS</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                datasets: [{
+                    label: 'Conversion Rate %',
+                    data: [12, 19, 15, 25, 32],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: { legend: { labels: { color: 'white' } } },
+                scales: {
+                    y: { ticks: { color: 'white' }, grid: { color: '#333' } },
+                    x: { ticks: { color: 'white' }, grid: { color: '#333' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
