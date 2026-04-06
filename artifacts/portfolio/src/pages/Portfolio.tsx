@@ -134,7 +134,7 @@ export default function Portfolio() {
         <motion.section variants={itemVariants} className="space-y-4">
           <div className="flex items-center gap-2 mb-6">
             <Database className="w-5 h-5 text-primary" />
-            <h2 className="text-xl font-bold tracking-widest text-emerald-50">SYS_METRICS</h2>
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">IMPACT_METRICS</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {kpiMetrics.map((kpi, i) => (
