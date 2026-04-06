@@ -38,7 +38,7 @@ const skillsData = [
   { subject: "ROI Modeling", A: 90, fullMark: 100 },
   { subject: "Social Strategy", A: 98, fullMark: 100 },
   { subject: "Power BI", A: 88, fullMark: 100 },
-  { subject: "A/B Testing", A: 85, fullMark: 100 },
+  { subject: "Graphic Design", A: 85, fullMark: 100 },
 ];
 
 const kpiMetrics = [
@@ -51,7 +51,7 @@ const capabilities = [
   { name: "SQL / Python / Excel", val: 95 },
   { name: "Data Visualization (Power BI)", val: 88 },
   { name: "Social Media Strategy", val: 98 },
-  { name: "A/B Conversion Testing", val: 85 },
+  { name: "Graphics Design & Copywriting", val: 85 },
 ];
 
 const brandsData = [
