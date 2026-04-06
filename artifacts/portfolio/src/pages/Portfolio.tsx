@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from "recharts";
 import { motion } from "framer-motion";
-import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronRight, Linkedin, Building2 } from "lucide-react";
+import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronRight, Linkedin, Building2, Mail, Award, Wrench, ExternalLink, Calendar, Layers } from "lucide-react";
 
 const skillsData = [
   { subject: "SQL/Python", A: 95, fullMark: 100 },
@@ -341,6 +341,52 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
+        {/* Content Portfolio */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Layers className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CONTENT_PORTFOLIO</h2>
+          </div>
+
+          {/* MK Creative Hub Work Samples */}
+          <div className="space-y-3">
+            <div className="text-xs opacity-50 tracking-wider">MK_CREATIVE_HUB // INSTAGRAM CONTENT — MARCH 2026</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {["/mk-content-3.png", "/mk-content-1.png", "/mk-content-2.png"].map((src, i) => (
+                <div key={i} className="border border-border/40 bg-card overflow-hidden group relative">
+                  <img src={src} alt={`MK Creative Hub content ${i + 1}`} className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-card/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-xs text-primary tracking-wider">CONTENT DESIGN // CANVA</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Outering FC */}
+          <div className="border border-border/40 bg-card p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 shrink-0">
+                <img src="/outering-fc-logo.png" alt="Outering FC" className="w-full h-full object-contain" />
+              </div>
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-0.5">OUTERING_FC // INSTAGRAM</div>
+                <div className="text-sm font-bold text-emerald-50">Live account managed for 1 yr 8 months</div>
+                <div className="text-xs text-primary/70 mt-0.5">Social Media Management · Graphic Design</div>
+              </div>
+            </div>
+            <a
+              href="https://www.instagram.com/outering_fc/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 border border-primary/40 text-primary px-4 py-2 text-xs tracking-widest hover:bg-primary/10 transition-colors shrink-0"
+            >
+              <ExternalLink className="w-3 h-3" />
+              VIEW ON INSTAGRAM
+            </a>
+          </div>
+        </motion.section>
+
         {/* Skills & DNA */}
         <motion.section variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
@@ -392,6 +438,143 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
+        {/* Tools Stack */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Wrench className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">TOOLS_STACK</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: "Canva", role: "Design & Content Creation", tag: "PRIMARY" },
+              { name: "Meta Business Suite", role: "Social Media Management", tag: "PRIMARY" },
+              { name: "Power BI", role: "Data Visualization & Reporting", tag: "ANALYTICS" },
+              { name: "Excel", role: "Data Analysis & Reporting", tag: "ANALYTICS" },
+            ].map((tool, i) => (
+              <div key={i} className="border border-border/40 bg-card p-4 space-y-2 hover:border-primary/40 transition-colors">
+                <div className="text-[9px] text-primary tracking-widest">{tool.tag}</div>
+                <div className="text-sm font-bold text-emerald-50">{tool.name}</div>
+                <div className="text-xs opacity-60 leading-relaxed">{tool.role}</div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Certifications */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Award className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CERTIFICATIONS</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { title: "Introduction to Programming Using Python", issuer: "Horizon Institute of Technology", date: "Nov 2025", skills: "Python" },
+              { title: "Introduction to Programming Using Python", issuer: "IT Bulls", date: "Nov 2025", skills: "Python" },
+              { title: "Search Engine Optimization", issuer: "Udemy", date: "Dec 2025", skills: "SEO" },
+              { title: "AI Engineer Explorer", issuer: "School of AI", date: "Dec 2025", skills: "Machine Learning, AI" },
+              { title: "Rust (Programming Language)", issuer: "School of AI", date: "Nov 2025", skills: "Rust" },
+            ].map((cert, i) => (
+              <div key={i} className="border border-border/40 bg-card p-4 flex gap-3 items-start hover:border-primary/40 transition-colors">
+                <div className="w-8 h-8 border border-primary/30 bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Award className="w-4 h-4 text-primary" />
+                </div>
+                <div className="space-y-0.5 min-w-0">
+                  <div className="text-sm font-bold text-emerald-50 leading-snug">{cert.title}</div>
+                  <div className="text-xs text-primary/80">{cert.issuer}</div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-[9px] tracking-wider opacity-50 border border-border/40 px-1.5 py-0.5">{cert.date}</span>
+                    <span className="text-[9px] tracking-wider text-primary/60">{cert.skills}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Services */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Briefcase className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">SERVICES_OFFERED</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { title: "Social Media Management", desc: "Full account management — strategy, content calendar, scheduling, community engagement, and performance tracking.", tag: "CORE" },
+              { title: "Graphic Design", desc: "Branded visuals, carousel posts, campaign graphics, and content design using Canva.", tag: "CORE" },
+              { title: "Copywriting & SEO", desc: "Scroll-stopping captions, SEO-optimised content, and messaging that converts.", tag: "CONTENT" },
+              { title: "Data Analytics & Reporting", desc: "Performance dashboards, insight reports, and data-driven recommendations using Power BI and Excel.", tag: "ANALYTICS" },
+              { title: "Campaign Strategy", desc: "End-to-end campaign planning and execution — from brief to content to post-campaign analysis.", tag: "STRATEGY" },
+            ].map((svc, i) => (
+              <div key={i} className="border border-border/40 bg-card p-5 space-y-2 hover:border-primary/40 transition-colors group">
+                <div className="text-[9px] text-primary tracking-widest">{svc.tag}</div>
+                <div className="text-sm font-bold text-emerald-50 group-hover:text-primary transition-colors">{svc.title}</div>
+                <p className="text-xs opacity-70 leading-relaxed">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Career Timeline */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Calendar className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CAREER_TIMELINE</h2>
+          </div>
+          <div className="relative border-l-2 border-primary/20 ml-3 space-y-0">
+            {[
+              {
+                role: "Social Media Manager & Graphic Designer",
+                company: "Outering FC",
+                period: "Aug 2024 – Present",
+                type: "Contract",
+                status: "ACTIVE",
+                points: ["Grew Instagram from 90 to 324 followers (+260%)", "Consistent content creation and branded graphic design over 20 months"],
+              },
+              {
+                role: "Social Media Strategist & Designer",
+                company: "MK Creative Hub",
+                period: "Dec 2025 – Mar 2026",
+                type: "Contract",
+                status: "FORMER",
+                points: ["Orchestrated Women's Day campaign — 578 reel views, +872.6% accounts reached", "Drove +322.7% profile activity surge in 30 days"],
+              },
+              {
+                role: "Casting Coordinator",
+                company: "Safaricom PLC",
+                period: "Feb 2023 – Jul 2023",
+                type: "Full-time",
+                status: "FORMER",
+                points: ["Developed unique character persona for a viral football ad campaign", "Part of cross-functional team of 5 that drove brand engagement increase in Month 1"],
+              },
+            ].map((job, i) => (
+              <div key={i} className="relative pl-8 pb-8">
+                <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full border-2 border-primary bg-background"></div>
+                <div className="border border-border/40 bg-card p-4 space-y-3">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <div className="text-sm font-bold text-emerald-50">{job.role}</div>
+                      <div className="text-xs text-primary/80 mt-0.5">{job.company}</div>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-[9px] tracking-wider opacity-50 border border-border/40 px-1.5 py-0.5">{job.type}</span>
+                      <span className={`text-[9px] tracking-wider px-1.5 py-0.5 border ${job.status === "ACTIVE" ? "text-emerald-400 border-emerald-400/30" : "text-muted-foreground border-border/40"}`}>● {job.status}</span>
+                    </div>
+                  </div>
+                  <div className="text-[10px] opacity-50 tracking-wider">{job.period}</div>
+                  <ul className="space-y-1">
+                    {job.points.map((p, j) => (
+                      <li key={j} className="text-xs opacity-70 flex gap-2">
+                        <ChevronRight className="w-3 h-3 text-primary shrink-0 mt-0.5" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
         {/* Brands Section */}
         <motion.section variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
@@ -438,6 +621,51 @@ export default function Portfolio() {
                 )}
               </motion.div>
             ))}
+          </div>
+        </motion.section>
+
+        {/* Contact */}
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="flex items-center gap-2 mb-6">
+            <Mail className="w-5 h-5 text-primary" />
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CONTACT</h2>
+          </div>
+          <div className="border border-primary/20 bg-card p-8 text-center space-y-6">
+            <div>
+              <div className="text-xs opacity-50 tracking-wider mb-2">OPEN_TO_WORK://</div>
+              <h3 className="text-2xl font-bold text-emerald-50 mb-2">Let's Build Something Together</h3>
+              <p className="text-sm opacity-70 max-w-md mx-auto leading-relaxed">
+                Available for social media management, graphic design, content strategy, and data analytics contracts. Let's talk.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="mailto:Abuogaaustin@gmail.com"
+                className="flex items-center gap-2 border border-primary text-primary px-6 py-3 text-sm tracking-widest hover:bg-primary hover:text-background transition-all duration-200 font-bold"
+              >
+                <Mail className="w-4 h-4" />
+                ABUOGAAUSTIN@GMAIL.COM
+              </a>
+              <a
+                href="https://www.linkedin.com/in/austin-abuoga"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-border/40 text-muted-foreground px-6 py-3 text-sm tracking-widest hover:border-primary/40 hover:text-primary transition-all duration-200"
+              >
+                <Linkedin className="w-4 h-4" />
+                LINKEDIN
+              </a>
+              <a
+                href="https://github.com/Kratosmatthews"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-border/40 text-muted-foreground px-6 py-3 text-sm tracking-widest hover:border-primary/40 hover:text-primary transition-all duration-200"
+              >
+                <Github className="w-4 h-4" />
+                GITHUB
+              </a>
+            </div>
+            <div className="text-xs opacity-30 tracking-wider pt-2">RESPONSE_TIME: &lt; 24H</div>
           </div>
         </motion.section>
 
