@@ -55,8 +55,8 @@ const capabilities = [
 ];
 
 const brandsData = [
-  { name: "MK Creative Hub", type: "Creative Agency", logo: null },
-  { name: "Outering FC", type: "Football Club", logo: null },
+  { name: "MK Creative Hub", type: "Creative Agency", logo: "/mk-creative-hub-logo.jpeg" },
+  { name: "Outering FC", type: "Football Club", logo: "/outering-fc-logo.png" },
   { name: "Safaricom PLC", type: "Telecom", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Safaricom_logo.svg/500px-Safaricom_logo.svg.png" },
 ];
 
@@ -353,7 +353,7 @@ export default function Portfolio() {
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="max-h-12 max-w-[120px] object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                      className="max-h-12 max-w-[120px] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-400"
                     />
                   ) : (
                     <div className="w-12 h-12 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center text-primary font-bold text-lg group-hover:bg-primary/20 transition-colors">
