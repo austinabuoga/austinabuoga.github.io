@@ -55,9 +55,9 @@ const capabilities = [
 ];
 
 const brandsData = [
-  { name: "MK Creative Hub", type: "Creative Agency" },
-  { name: "Outering FC", type: "Football Club" },
-  { name: "Safaricom PLC", type: "Telecom" },
+  { name: "MK Creative Hub", type: "Creative Agency", logo: null },
+  { name: "Outering FC", type: "Football Club", logo: null },
+  { name: "Safaricom PLC", type: "Telecom", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Safaricom_logo.svg/500px-Safaricom_logo.svg.png" },
 ];
 
 const identityInfo = [
@@ -341,15 +341,25 @@ export default function Portfolio() {
             {brandsData.map((brand, i) => (
               <motion.div
                 key={i}
-                className="border border-border/40 bg-card hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 p-5 flex flex-col items-center justify-center gap-2 group cursor-default"
+                className="border border-border/40 bg-card hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 p-6 flex flex-col items-center justify-center gap-3 group cursor-default"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
                 data-testid={`card-brand-${i}`}
               >
-                <div className="w-8 h-8 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center text-primary font-bold text-sm group-hover:bg-primary/20 transition-colors">
-                  {brand.name.charAt(0)}
+                <div className="h-12 w-full flex items-center justify-center">
+                  {brand.logo ? (
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="max-h-12 max-w-[120px] object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center text-primary font-bold text-lg group-hover:bg-primary/20 transition-colors">
+                      {brand.name.charAt(0)}
+                    </div>
+                  )}
                 </div>
                 <span className="text-xs font-semibold tracking-widest text-center text-emerald-100/80 group-hover:text-emerald-50 transition-colors uppercase">
                   {brand.name}
