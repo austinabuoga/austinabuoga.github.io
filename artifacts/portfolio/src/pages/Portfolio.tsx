@@ -55,7 +55,7 @@ const capabilities = [
 ];
 
 const brandsData = [
-  { name: "MK Creative Hub", type: "Creative Agency", logo: "/mk-creative-hub-logo.jpeg" },
+  { name: "MK Creative Hub", type: "Creative Agency", logo: "/mk-creative-hub-logo.png" },
   { name: "Outering FC", type: "Football Club", logo: "/outering-fc-logo.png" },
   { name: "Safaricom PLC", type: "Telecom", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Safaricom_logo.svg/500px-Safaricom_logo.svg.png" },
 ];
