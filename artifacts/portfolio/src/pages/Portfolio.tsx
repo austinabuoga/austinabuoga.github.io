@@ -226,7 +226,7 @@ export default function Portfolio() {
                   <h3 className="text-xl font-bold text-emerald-50 tracking-widest">MK CREATIVE HUB</h3>
                   <div className="flex flex-wrap items-center gap-2 mt-2">
                     <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: 4 MONTHS</span>
-                    <span className="text-xs text-emerald-400 border border-emerald-400/30 px-2 py-0.5 tracking-wide">● ACTIVE</span>
+                    <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 tracking-wide">● FORMER</span>
                   </div>
                 </div>
               </div>
@@ -263,11 +263,20 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              <div className="border-l-2 border-primary/40 pl-4">
-                <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENT://</div>
-                <p className="text-sm opacity-80 leading-relaxed">
-                  Orchestrated and designed graphics for a Women's Day campaign spotlighting all 4 company founders — the top reel hit 578 views and drove profile activity up +322.7%. Reels now account for 83.3% of all interactions, with accounts reached growing 872.6% period-over-period.
-                </p>
+              <div className="border-l-2 border-primary/40 pl-4 space-y-4">
+                <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENTS://</div>
+                <div className="space-y-1">
+                  <div className="text-xs text-primary tracking-wider font-bold">STRATEGIC DESIGN & ORCHESTRATION</div>
+                  <p className="text-sm opacity-80 leading-relaxed">Spearheaded the visual identity and campaign strategy for International Women's Day, spotlighting the company's four female founders to drive brand authority and engagement.</p>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-xs text-primary tracking-wider font-bold">VIRAL GROWTH & REACH</div>
+                  <p className="text-sm opacity-80 leading-relaxed">Achieved a +322.7% surge in profile activity, with the flagship reel garnering 578 views and contributing to a 872.6% period-over-period increase in total accounts reached.</p>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-xs text-primary tracking-wider font-bold">CONTENT OPTIMIZATION</div>
+                  <p className="text-sm opacity-80 leading-relaxed">Shifted the engagement paradigm by prioritizing short-form video, resulting in Reels accounting for 83.3% of all platform interactions.</p>
+                </div>
               </div>
             </div>
           </div>
