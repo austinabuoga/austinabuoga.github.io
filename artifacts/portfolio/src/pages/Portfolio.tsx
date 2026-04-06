@@ -11,6 +11,21 @@ import { motion } from "framer-motion";
 import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronRight, Linkedin, Building2, Mail, Award, Wrench, ExternalLink, Calendar, Layers, Phone, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
+function getTenure(startYear: number, startMonth: number): string {
+  const now = new Date();
+  let years = now.getFullYear() - startYear;
+  let months = now.getMonth() - startMonth;
+  if (months < 0) { years--; months += 12; }
+  if (years === 0) return `${months} ${months === 1 ? 'MONTH' : 'MONTHS'}`;
+  if (months === 0) return `${years} ${years === 1 ? 'YR' : 'YRS'}`;
+  return `${years} ${years === 1 ? 'YR' : 'YRS'} ${months} ${months === 1 ? 'MONTH' : 'MONTHS'}`;
+}
+
+function getTotalMonths(startYear: number, startMonth: number): number {
+  const now = new Date();
+  return (now.getFullYear() - startYear) * 12 + (now.getMonth() - startMonth);
+}
+
 const skillsData = [
   { subject: "SQL/Python", A: 95, fullMark: 100 },
   { subject: "Data Analysis", A: 92, fullMark: 100 },
@@ -62,6 +77,8 @@ const itemVariants = {
 
 export default function Portfolio() {
   const [showPhone, setShowPhone] = useState(false);
+  const outeringTenure = getTenure(2024, 7);
+  const outeringMonths = getTotalMonths(2024, 7);
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground font-mono selection:bg-primary/30 selection:text-primary relative overflow-x-hidden p-4 md:p-8 lg:p-12 pb-24">
@@ -178,7 +195,7 @@ export default function Portfolio() {
                   <div className="text-xs opacity-50 tracking-wider mb-1">CLIENT://</div>
                   <h3 className="text-xl font-bold text-emerald-50 tracking-widest">OUTERING FC</h3>
                   <div className="flex flex-wrap items-center gap-2 mt-2">
-                    <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: 1 YR 8 MONTHS</span>
+                    <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: {outeringTenure}</span>
                     <span className="text-xs text-emerald-400 border border-emerald-400/30 px-2 py-0.5 tracking-wide">● ACTIVE</span>
                   </div>
                 </div>
@@ -214,7 +231,7 @@ export default function Portfolio() {
               <div className="border-l-2 border-primary/40 pl-4">
                 <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENT://</div>
                 <p className="text-sm opacity-80 leading-relaxed">
-                  Grew Outering FC's Instagram from 90 to 324 followers over 20 months through consistent content creation and branded graphic design — establishing a recognisable digital identity for the football club from the ground up.
+                  Grew Outering FC's Instagram from 90 to 324 followers over {outeringMonths} months through consistent content creation and branded graphic design — establishing a recognisable digital identity for the football club from the ground up.
                 </p>
               </div>
             </div>
@@ -373,7 +390,7 @@ export default function Portfolio() {
               </div>
               <div>
                 <div className="text-xs opacity-50 tracking-wider mb-0.5">OUTERING_FC // INSTAGRAM</div>
-                <div className="text-sm font-bold text-emerald-50">Live account managed for 1 yr 8 months</div>
+                <div className="text-sm font-bold text-emerald-50">Live account managed for {outeringTenure.toLowerCase()}</div>
                 <div className="text-xs text-primary/70 mt-0.5">Social Media Management · Graphic Design</div>
               </div>
             </div>
@@ -530,7 +547,7 @@ export default function Portfolio() {
                 period: "Aug 2024 – Present",
                 type: "Contract",
                 status: "ACTIVE",
-                points: ["Grew Instagram from 90 to 324 followers (+260%)", "Consistent content creation and branded graphic design over 20 months"],
+                points: ["Grew Instagram from 90 to 324 followers (+260%)", `Consistent content creation and branded graphic design over ${outeringMonths} months`],
               },
               {
                 role: "Social Media Strategist & Designer",
