@@ -279,6 +279,64 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+
+            {/* Safaricom */}
+            <div className="border border-border bg-card p-6 space-y-6">
+              <div className="flex items-start gap-4">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Safaricom_logo.svg/500px-Safaricom_logo.svg.png"
+                  alt="Safaricom PLC"
+                  className="w-16 h-16 object-contain mt-1"
+                />
+                <div className="flex-1">
+                  <div className="text-xs opacity-50 tracking-wider mb-1">CLIENT://</div>
+                  <h3 className="text-xl font-bold text-emerald-50 tracking-widest">SAFARICOM PLC</h3>
+                  <div className="flex flex-wrap items-center gap-2 mt-2">
+                    <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: 6 MONTHS // FEB–JUL 2023</span>
+                    <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 tracking-wide">● FORMER</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-2">ROLE & SERVICES_DEPLOYED://</div>
+                <div className="flex flex-wrap gap-2">
+                  {["Casting Coordinator", "Character Development", "Social Media Marketing", "Campaign Production", "Recruiting"].map(s => (
+                    <span key={s} className="text-xs border border-primary/20 bg-primary/5 text-primary px-2 py-1 tracking-wide">{s}</span>
+                  ))}
+                  <span className="text-xs border border-border/40 text-muted-foreground px-2 py-1 tracking-wide">Employment: Full-time</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-3">ENGAGEMENT_OVERVIEW://</div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {[
+                    { label: "TEAM SIZE", value: "5", sub: "Cross-functional" },
+                    { label: "CAMPAIGN TYPE", value: "Football Ad", sub: "Viral format" },
+                    { label: "IMPACT WINDOW", value: "Month 1", sub: "Brand engagement lift" },
+                  ].map((m, i) => (
+                    <div key={i} className="border border-border/40 p-3 bg-muted/10">
+                      <div className="text-xs opacity-50 mb-1 tracking-wider">{m.label}</div>
+                      <div className="text-lg font-bold text-emerald-50">{m.value}</div>
+                      {m.sub && <div className="text-xs text-primary mt-0.5 tracking-wide">{m.sub}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-l-2 border-primary/40 pl-4 space-y-4">
+                <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENTS://</div>
+                <div className="space-y-1">
+                  <div className="text-xs text-primary tracking-wider font-bold">CHARACTER DEVELOPMENT</div>
+                  <p className="text-sm opacity-80 leading-relaxed">Developed a unique character persona that resonated with the target demographic, forming the creative foundation of the campaign.</p>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-xs text-primary tracking-wider font-bold">VIRAL CAMPAIGN EXECUTION</div>
+                  <p className="text-sm opacity-80 leading-relaxed">Part of a team of 5 that developed a viral Safaricom football advertisement campaign, generating a measurable increase in brand engagement on social media within the first month of launch.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.section>
 
