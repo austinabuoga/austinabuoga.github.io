@@ -25,8 +25,8 @@ const kpiMetrics = [
 ];
 
 const capabilities = [
-  { name: "SQL / Python / Excel", val: 95 },
-  { name: "Data Visualization (Power BI)", val: 88 },
+  { name: "SQL / Python", val: 95 },
+  { name: "Data Visualization (Power BI / Excel)", val: 88 },
   { name: "Social Media Strategy", val: 98 },
   { name: "Graphics Design & Copywriting", val: 85 },
 ];
