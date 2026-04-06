@@ -1,8 +1,4 @@
 import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
   PolarAngleAxis,
   PolarGrid,
   PolarRadiusAxis,
@@ -10,27 +6,9 @@ import {
   RadarChart,
   ResponsiveContainer,
   Tooltip,
-  XAxis,
-  YAxis,
 } from "recharts";
 import { motion } from "framer-motion";
 import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronRight, Linkedin, Building2 } from "lucide-react";
-import { useState } from "react";
-
-const kenyaData = [
-  { month: "Jan", reach: 800000 },
-  { month: "Feb", reach: 1200000 },
-  { month: "Mar", reach: 2100000 },
-  { month: "Apr", reach: 4300000 },
-];
-
-const brandRefreshData = [
-  { day: "D1", impressions: 4500 },
-  { day: "D2", impressions: 7200 },
-  { day: "D3", impressions: 12000 },
-  { day: "D4", impressions: 18500 },
-  { day: "D5", impressions: 29800 },
-];
 
 const skillsData = [
   { subject: "SQL/Python", A: 95, fullMark: 100 },
@@ -42,9 +20,9 @@ const skillsData = [
 ];
 
 const kpiMetrics = [
-  { label: "REACH", value: "4.3M", trend: "+103% YOY" },
-  { label: "PROFILE VISITS", value: "29.8K", trend: "ENGAGEMENT OPTIMIZED" },
-  { label: "DATA DRIVEN", value: "100%", trend: "STRATEGY LED" },
+  { label: "FOLLOWER GROWTH", value: "260%", trend: "90 → 324 // OUTERING FC" },
+  { label: "ACCOUNTS REACHED", value: "817", trend: "+872.6% // MK CREATIVE HUB" },
+  { label: "PROFILE ACTIVITY", value: "+322.7%", trend: "VS PREVIOUS PERIOD // MK" },
 ];
 
 const capabilities = [
@@ -83,7 +61,6 @@ const itemVariants = {
 };
 
 export default function Portfolio() {
-  const [hoveredChart, setHoveredChart] = useState<string | null>(null);
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground font-mono selection:bg-primary/30 selection:text-primary relative overflow-x-hidden p-4 md:p-8 lg:p-12 pb-24">
@@ -182,95 +159,114 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        {/* Campaigns / Charts */}
+        {/* Client Cases */}
         <motion.section variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Terminal className="w-5 h-5 text-primary" />
-            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CAMPAIGN_TELEMETRY</h2>
+            <h2 className="text-xl font-bold tracking-widest text-emerald-50">CLIENT_CASES</h2>
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Chart 1 */}
-            <div 
-              className="border border-border bg-card p-6 relative group h-[400px]"
-              onMouseEnter={() => setHoveredChart('reach')}
-              onMouseLeave={() => setHoveredChart(null)}
-              data-testid="card-chart-reach"
-            >
-              <div className="mb-4">
-                <div className="text-xs opacity-60 mb-1">TARGET_OP:</div>
-                <div className="text-lg font-bold text-emerald-50">OP_KENYA_REACH_2026</div>
-                <div className="text-sm text-primary/70">Market Penetration Analysis</div>
-              </div>
-              
-              <div className="h-[250px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={kenyaData}>
-                    <defs>
-                      <linearGradient id="colorReach" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.4}/>
-                        <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${val / 1000000}M`} />
-                    <Tooltip 
-                      contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '0' }}
-                      itemStyle={{ color: 'hsl(var(--foreground))' }}
-                    />
-                    <Area type="monotone" dataKey="reach" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorReach)" />
-                  </AreaChart>
-                </ResponsiveContainer>
+
+          <div className="space-y-8">
+            {/* Outering FC */}
+            <div className="border border-border bg-card p-6 space-y-6">
+              <div className="flex items-start gap-4">
+                <img src="/outering-fc-logo.png" alt="Outering FC" className="w-16 h-16 object-contain grayscale opacity-80 mt-1" />
+                <div className="flex-1">
+                  <div className="text-xs opacity-50 tracking-wider mb-1">CLIENT://</div>
+                  <h3 className="text-xl font-bold text-emerald-50 tracking-widest">OUTERING FC</h3>
+                  <div className="flex flex-wrap items-center gap-2 mt-2">
+                    <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: 1 YR 8 MONTHS</span>
+                    <span className="text-xs text-emerald-400 border border-emerald-400/30 px-2 py-0.5 tracking-wide">● ACTIVE</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Hover Overlay */}
-              <div className={`absolute inset-0 bg-card/95 backdrop-blur-sm border border-primary p-6 transition-opacity duration-300 flex flex-col justify-center ${hoveredChart === 'reach' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                <div className="text-2xl font-bold text-emerald-50 mb-4">CASE STUDY: KENYA REACH</div>
-                <p className="text-sm opacity-90 leading-relaxed mb-4">
-                  Initiated a strategic content pivot analyzing regional engagement data. By cross-referencing peak active hours with algorithmic preferences, organic reach skyrocketed to 4.3M in Q1.
-                </p>
-                <div className="text-xs text-primary font-bold tracking-widest border-t border-border/50 pt-4 mt-auto">
-                  STATUS: SUCCESS // OVER_DELIVERED
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-2">SERVICES_DEPLOYED://</div>
+                <div className="flex flex-wrap gap-2">
+                  {["Social Media Management", "Graphic Design"].map(s => (
+                    <span key={s} className="text-xs border border-primary/20 bg-primary/5 text-primary px-2 py-1 tracking-wide">{s}</span>
+                  ))}
+                  <span className="text-xs border border-border/40 text-muted-foreground px-2 py-1 tracking-wide">Platform: Instagram</span>
                 </div>
+              </div>
+
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-3">PERFORMANCE_METRICS://</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {[
+                    { label: "STARTING FOLLOWERS", value: "90" },
+                    { label: "CURRENT FOLLOWERS", value: "324" },
+                    { label: "TOTAL GROWTH", value: "+260%" },
+                    { label: "NEW FOLLOWERS", value: "+234" },
+                  ].map((m, i) => (
+                    <div key={i} className="border border-border/40 p-3 bg-muted/10">
+                      <div className="text-xs opacity-50 mb-1 tracking-wider">{m.label}</div>
+                      <div className="text-2xl font-bold text-emerald-50">{m.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-l-2 border-primary/40 pl-4">
+                <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENT://</div>
+                <p className="text-sm opacity-80 leading-relaxed">
+                  Grew Outering FC's Instagram from 90 to 324 followers over 20 months through consistent content creation and branded graphic design — establishing a recognisable digital identity for the football club from the ground up.
+                </p>
               </div>
             </div>
 
-            {/* Chart 2 */}
-            <div 
-              className="border border-border bg-card p-6 relative group h-[400px]"
-              onMouseEnter={() => setHoveredChart('visits')}
-              onMouseLeave={() => setHoveredChart(null)}
-              data-testid="card-chart-visits"
-            >
-              <div className="mb-4">
-                <div className="text-xs opacity-60 mb-1">TARGET_OP:</div>
-                <div className="text-lg font-bold text-emerald-50">TRAFFIC_INJECTION</div>
-                <div className="text-sm text-primary/70">Profile Visit Campaign</div>
-              </div>
-              
-              <div className="h-[250px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={brandRefreshData}>
-                    <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${val / 1000}k`} />
-                    <Tooltip 
-                      cursor={{ fill: 'hsl(var(--muted))', opacity: 0.2 }}
-                      contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '0' }}
-                    />
-                    <Bar dataKey="impressions" fill="hsl(var(--primary))" radius={[2, 2, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+            {/* MK Creative Hub */}
+            <div className="border border-border bg-card p-6 space-y-6">
+              <div className="flex items-start gap-4">
+                <img src="/mk-creative-hub-logo.png" alt="MK Creative Hub" className="w-16 h-16 object-contain grayscale opacity-80 mt-1" />
+                <div className="flex-1">
+                  <div className="text-xs opacity-50 tracking-wider mb-1">CLIENT://</div>
+                  <h3 className="text-xl font-bold text-emerald-50 tracking-widest">MK CREATIVE HUB</h3>
+                  <div className="flex flex-wrap items-center gap-2 mt-2">
+                    <span className="text-xs text-primary border border-primary/30 px-2 py-0.5 tracking-wide">TENURE: 4 MONTHS</span>
+                    <span className="text-xs text-emerald-400 border border-emerald-400/30 px-2 py-0.5 tracking-wide">● ACTIVE</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Hover Overlay */}
-              <div className={`absolute inset-0 bg-card/95 backdrop-blur-sm border border-primary p-6 transition-opacity duration-300 flex flex-col justify-center ${hoveredChart === 'visits' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                <div className="text-2xl font-bold text-emerald-50 mb-4">CASE STUDY: TRAFFIC INJECTION</div>
-                <p className="text-sm opacity-90 leading-relaxed mb-4">
-                  Engineered a 5-day content funnel designed strictly for profile conversion. Leveraged A/B tested copy and strategic CTA placement to drive 29.8K direct visits, validating the engagement hypothesis.
-                </p>
-                <div className="text-xs text-primary font-bold tracking-widest border-t border-border/50 pt-4 mt-auto">
-                  STATUS: SUCCESS // OPTIMIZED
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-2">SERVICES_DEPLOYED://</div>
+                <div className="flex flex-wrap gap-2">
+                  {["Social Media Management", "Strategy", "Graphic Design", "Copywriting", "SMO", "SEO"].map(s => (
+                    <span key={s} className="text-xs border border-primary/20 bg-primary/5 text-primary px-2 py-1 tracking-wide">{s}</span>
+                  ))}
+                  <span className="text-xs border border-border/40 text-muted-foreground px-2 py-1 tracking-wide">Platform: Instagram</span>
                 </div>
+              </div>
+
+              <div>
+                <div className="text-xs opacity-50 tracking-wider mb-1">
+                  PERFORMANCE_METRICS:// <span className="text-primary normal-case font-normal">Last 30 Days — 25 Feb to 26 Mar</span>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-3">
+                  {[
+                    { label: "TOTAL VIEWS", value: "2,478", sub: null },
+                    { label: "ACCOUNTS REACHED", value: "817", sub: "+872.6%" },
+                    { label: "TOTAL INTERACTIONS", value: "248", sub: null },
+                    { label: "PROFILE VISITS", value: "92", sub: "+318.2%" },
+                    { label: "PROFILE ACTIVITY", value: "93", sub: "+322.7%" },
+                    { label: "TOP REEL VIEWS", value: "578", sub: "Women's Day" },
+                  ].map((m, i) => (
+                    <div key={i} className="border border-border/40 p-3 bg-muted/10">
+                      <div className="text-xs opacity-50 mb-1 tracking-wider">{m.label}</div>
+                      <div className="text-2xl font-bold text-emerald-50">{m.value}</div>
+                      {m.sub && <div className="text-xs text-primary mt-0.5 tracking-wide">{m.sub}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-l-2 border-primary/40 pl-4">
+                <div className="text-xs opacity-50 tracking-wider mb-1">KEY_ACHIEVEMENT://</div>
+                <p className="text-sm opacity-80 leading-relaxed">
+                  Orchestrated and designed graphics for a Women's Day campaign spotlighting all 4 company founders — the top reel hit 578 views and drove profile activity up +322.7%. Reels now account for 83.3% of all interactions, with accounts reached growing 872.6% period-over-period.
+                </p>
               </div>
             </div>
           </div>
