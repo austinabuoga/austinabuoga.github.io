@@ -13,7 +13,6 @@ import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronR
 const skillsData = [
   { subject: "SQL/Python", A: 95, fullMark: 100 },
   { subject: "Data Analysis", A: 92, fullMark: 100 },
-  { subject: "ROI Modeling", A: 90, fullMark: 100 },
   { subject: "Social Strategy", A: 98, fullMark: 100 },
   { subject: "Power BI", A: 88, fullMark: 100 },
   { subject: "Graphic Design", A: 85, fullMark: 100 },
