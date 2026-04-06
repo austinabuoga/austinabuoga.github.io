@@ -63,7 +63,7 @@ const brandsData = [
 const identityInfo = [
   { label: "STATUS", value: "HIRE_READY", icon: <Activity className="w-4 h-4" /> },
   { label: "REGION", value: "KENYA / GLOBAL", icon: <Globe className="w-4 h-4" /> },
-  { label: "SPECIALIZATION", value: "STRATEGIC_DATA", icon: <Briefcase className="w-4 h-4" /> },
+  { label: "SPECIALIZATION", value: "DATA-DRIVEN GROWTH", icon: <Briefcase className="w-4 h-4" /> },
   { label: "UPTIME", value: "24/7/365", icon: <Clock className="w-4 h-4" /> },
 ];
 
@@ -114,9 +114,7 @@ export default function Portfolio() {
                 AUSTIN ABUOGA
               </h1>
               <p className="text-primary text-sm md:text-base max-w-xl leading-relaxed opacity-90">
-                &gt; SOCIAL MEDIA MANAGER & DATA ANALYST
-                <br />
-                &gt; OPERATING AT THE INTERSECTION OF DATA-DRIVEN STRATEGY AND CREATIVE CONTENT.
+                &gt; SOCIAL MEDIA MANAGER & DATA ANALYST FOCUSED ON SCALING BRANDS THROUGH DATA-DRIVEN STRATEGY, PERFORMANCE ANALYTICS, AND HIGH-CONVERTING CONTENT.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
