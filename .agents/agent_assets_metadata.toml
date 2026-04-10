@@ -1,8 +1,0 @@
-uploads = []
-generated = []
-
-[[outputs]]
-id = "-6hDogw49NlS592CcGWoi"
-uri = "file://austin-abuoga-portfolio.tar.gz"
-type = "unspecified"
-title = "Austin Abuoga Portfolio — Source Code"
