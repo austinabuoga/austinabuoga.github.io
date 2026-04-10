@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import { Terminal, Activity, Github, Globe, Briefcase, Clock, Database, ChevronRight, Linkedin, Building2, Mail, Award, Wrench, ExternalLink, Calendar, Layers, Phone, MessageCircle, BarChart2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function getTenure(startYear: number, startMonth: number): string {
   const now = new Date();
@@ -75,11 +75,51 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const NAV_ITEMS = [
+    { id: 'metrics', label: 'METRICS' },
+    { id: 'clients', label: 'CLIENTS' },
+    { id: 'portfolio', label: 'PORTFOLIO' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'tools', label: 'TOOLS' },
+    { id: 'certs', label: 'CERTS' },
+    { id: 'services', label: 'SERVICES' },
+    { id: 'timeline', label: 'TIMELINE' },
+    { id: 'data', label: 'DATA' },
+    { id: 'contact', label: 'CONTACT' },
+];
+
 export default function Portfolio() {
   const [showPhone, setShowPhone] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [navVisible, setNavVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const outeringTenure = getTenure(2024, 7);
   const outeringMonths = getTotalMonths(2024, 7);
+
+  useEffect(() => {
+    const handleScroll = () => setNavVisible(window.scrollY > 220);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { threshold: 0.25, rootMargin: '-80px 0px -60% 0px' }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground font-mono selection:bg-primary/30 selection:text-primary relative overflow-x-hidden p-4 md:p-8 lg:p-12 pb-24">
@@ -102,6 +142,28 @@ export default function Portfolio() {
             onClick={e => e.stopPropagation()}
           />
         </div>
+      )}
+
+      {/* Sticky Nav */}
+      {navVisible && (
+        <nav className="fixed top-0 left-0 right-0 z-[90] bg-background/95 backdrop-blur-sm border-b border-primary/20 shadow-lg shadow-black/40">
+          <div className="flex items-center overflow-x-auto px-4 py-0 gap-0" style={{ scrollbarWidth: 'none' }}>
+            <span className="text-primary text-xs pr-3 shrink-0 opacity-40 border-r border-border/30 py-3 mr-1">~/</span>
+            {NAV_ITEMS.map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                className={`text-xs px-3 py-3 tracking-widest shrink-0 transition-all duration-200 border-b-2 ${
+                  activeSection === id
+                    ? 'text-primary border-primary font-bold'
+                    : 'text-muted-foreground border-transparent hover:text-primary/70'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </nav>
       )}
 
       {/* Scanline Grid Texture Overlay */}
@@ -172,7 +234,7 @@ export default function Portfolio() {
         </motion.header>
 
         {/* KPIs */}
-        <motion.section variants={itemVariants} className="space-y-4">
+        <motion.section id="metrics" variants={itemVariants} className="space-y-4">
           <div className="flex items-center gap-2 mb-6">
             <Database className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">IMPACT_METRICS</h2>
@@ -200,7 +262,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Client Cases */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="clients" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Terminal className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">CLIENT_CASES</h2>
@@ -383,7 +445,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Content Portfolio */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="portfolio" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Layers className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">CONTENT_PORTFOLIO</h2>
@@ -430,7 +492,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Skills & DNA */}
-        <motion.section variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <motion.section id="skills" variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="flex items-center gap-2 mb-6">
               <Activity className="w-5 h-5 text-primary" />
@@ -481,7 +543,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Tools Stack */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="tools" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Wrench className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">TOOLS_STACK</h2>
@@ -503,7 +565,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Certifications */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="certs" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Award className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">CERTIFICATIONS</h2>
@@ -534,7 +596,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Services */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="services" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Briefcase className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">SERVICES_OFFERED</h2>
@@ -557,7 +619,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Career Timeline */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="timeline" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Calendar className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">CAREER_TIMELINE</h2>
@@ -667,7 +729,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Data Projects */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="data" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <BarChart2 className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">DATA_PROJECTS</h2>
@@ -767,7 +829,7 @@ export default function Portfolio() {
         </motion.section>
 
         {/* Contact */}
-        <motion.section variants={itemVariants} className="space-y-6">
+        <motion.section id="contact" variants={itemVariants} className="space-y-6">
           <div className="flex items-center gap-2 mb-6">
             <Mail className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-bold tracking-widest text-emerald-50">CONTACT</h2>
