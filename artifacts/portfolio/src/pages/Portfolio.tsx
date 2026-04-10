@@ -84,7 +84,7 @@ const NAV_ITEMS = [
     { id: 'certs', label: 'CERTS' },
     { id: 'services', label: 'SERVICES' },
     { id: 'timeline', label: 'TIMELINE' },
-    { id: 'data', label: 'DATA' },
+    { id: 'data', label: 'PROJECTS' },
     { id: 'contact', label: 'CONTACT' },
 ];
 
