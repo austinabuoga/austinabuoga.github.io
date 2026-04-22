@@ -220,6 +220,13 @@ export default function DataAnalysis() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
+              <div className="mb-4">
+                <img
+                  src="/logo-black.png"
+                  alt="A17 Logo"
+                  className="w-20 h-20 object-contain border border-primary/20 bg-black/60 p-1"
+                />
+              </div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-emerald-50 mb-2" style={{ textShadow: "0 0 20px rgba(52,211,153,0.3)" }}>
                 AUSTIN ABUOGA
               </h1>

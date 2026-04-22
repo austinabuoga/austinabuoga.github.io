@@ -158,6 +158,13 @@ export default function SocialMedia() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
+            <div className="mb-8">
+              <img
+                src="/logo-white.png"
+                alt="A17 Logo"
+                className="w-28 h-28 object-contain rounded-2xl"
+              />
+            </div>
             <div className="inline-flex items-center gap-2 bg-rose-100 text-rose-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
               <Megaphone className="w-3.5 h-3.5" />
               Social Media Management

@@ -31,6 +31,13 @@ export default function Home() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center max-w-2xl"
         >
+          <div className="mb-8 flex justify-center">
+            <img
+              src="/logo-black.png"
+              alt="A17 Logo"
+              className="w-44 h-44 md:w-56 md:h-56 object-contain"
+            />
+          </div>
           <div className="mb-3 inline-block text-xs tracking-[0.25em] text-white/30 uppercase border border-white/10 px-3 py-1 rounded-full">
             Portfolio
           </div>
