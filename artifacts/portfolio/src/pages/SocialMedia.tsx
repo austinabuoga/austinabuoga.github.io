@@ -23,24 +23,21 @@ function getTotalMonths(startYear: number, startMonth: number): number {
   return (now.getFullYear() - startYear) * 12 + (now.getMonth() - startMonth);
 }
 
-const CONTENT_SCREENSHOTS = [
-  "/mk-14.png",
-  "/mk-15.png",
-  "/mk-16.png",
-  "/mk-17.png",
-  "/mk-18.png",
-  "/mk-19.png",
-  "/mk-20.png",
-  "/mk-21.png",
-  "/mk-22.png",
-  "/mk-32.png",
-  "/mk-33.png",
-  "/mk-34.png",
-  "/mk-35.png",
-  "/mk-36.png",
-  "/mk-37.png",
-  "/mk-38.png",
+const MK_SCREENSHOTS = [
+  "/mk-14.png", "/mk-15.png", "/mk-16.png", "/mk-17.png",
+  "/mk-18.png", "/mk-19.png", "/mk-20.png", "/mk-21.png",
+  "/mk-22.png", "/mk-32.png", "/mk-33.png", "/mk-34.png",
+  "/mk-35.png", "/mk-36.png", "/mk-37.png", "/mk-38.png",
 ];
+
+const OFC_SCREENSHOTS = [
+  "/ofc-1.jpg", "/ofc-2.jpg", "/ofc-3.jpg", "/ofc-4.jpg",
+  "/ofc-5.jpg", "/ofc-6.jpg", "/ofc-7.jpg", "/ofc-8.jpg",
+  "/ofc-9.jpg", "/ofc-10.jpg", "/ofc-11.jpg", "/ofc-12.jpg",
+  "/ofc-13.jpg", "/ofc-14.jpg", "/ofc-15.jpg",
+];
+
+const CONTENT_SCREENSHOTS = MK_SCREENSHOTS;
 
 const NAV = [
   { id: "results", label: "Results" },
@@ -54,6 +51,7 @@ const NAV = [
 export default function SocialMedia() {
   const [, navigate] = useLocation();
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightboxImages, setLightboxImages] = useState<string[]>(CONTENT_SCREENSHOTS);
   const [zoom, setZoom] = useState(1);
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -62,16 +60,16 @@ export default function SocialMedia() {
   const outeringMonths = getTotalMonths(2024, 7);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const lbIdx = lightbox ? CONTENT_SCREENSHOTS.indexOf(lightbox) : -1;
+  const lbIdx = lightbox ? lightboxImages.indexOf(lightbox) : -1;
 
-  const openLightbox = (src: string) => { setLightbox(src); setZoom(1); };
+  const openLightbox = (src: string, images: string[]) => { setLightboxImages(images); setLightbox(src); setZoom(1); };
   const closeLightbox = () => { setLightbox(null); setZoom(1); };
   const prev = useCallback(() => {
-    if (lbIdx > 0) { setLightbox(CONTENT_SCREENSHOTS[lbIdx - 1]); setZoom(1); }
-  }, [lbIdx]);
+    if (lbIdx > 0) { setLightbox(lightboxImages[lbIdx - 1]); setZoom(1); }
+  }, [lbIdx, lightboxImages]);
   const next = useCallback(() => {
-    if (lbIdx < CONTENT_SCREENSHOTS.length - 1) { setLightbox(CONTENT_SCREENSHOTS[lbIdx + 1]); setZoom(1); }
-  }, [lbIdx]);
+    if (lbIdx < lightboxImages.length - 1) { setLightbox(lightboxImages[lbIdx + 1]); setZoom(1); }
+  }, [lbIdx, lightboxImages]);
 
   useEffect(() => {
     const handleScroll = () => setNavVisible(window.scrollY > 200);
@@ -192,7 +190,7 @@ export default function SocialMedia() {
 
             {/* Thumbnail strip */}
             <div className="absolute bottom-0 left-0 right-0 flex gap-2 px-5 py-4 overflow-x-auto justify-center" style={{ scrollbarWidth: "none" }} onClick={e => e.stopPropagation()}>
-              {CONTENT_SCREENSHOTS.map((src, i) => (
+              {lightboxImages.map((src, i) => (
                 <button
                   key={i}
                   onClick={() => { setLightbox(src); setZoom(1); }}
@@ -421,11 +419,41 @@ export default function SocialMedia() {
                   </div>
                 ))}
               </div>
-              <div className="bg-rose-500/10 rounded-2xl p-5 border border-rose-500/20">
+              <div className="bg-rose-500/10 rounded-2xl p-5 border border-rose-500/20 mb-6">
                 <div className="text-xs font-bold text-rose-400 uppercase tracking-widest mb-2">Key Achievement</div>
                 <p className="text-sm text-white/60 leading-relaxed">
                   Grew Outering FC's Instagram from 90 to 324 followers over {outeringMonths} months through consistent content creation and branded graphic design — establishing a recognisable digital identity for the football club from the ground up.
                 </p>
+              </div>
+
+              {/* OFC content grid */}
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Palette className="w-4 h-4 text-rose-400" />
+                  <span className="text-xs font-bold text-rose-400 uppercase tracking-widest">Content Samples</span>
+                </div>
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
+                  {OFC_SCREENSHOTS.map((src, i) => (
+                    <motion.button
+                      key={i}
+                      onClick={() => openLightbox(src, OFC_SCREENSHOTS)}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.03 }}
+                      className="group relative overflow-hidden rounded-xl border border-white/10 cursor-zoom-in aspect-square bg-white/5"
+                    >
+                      <img
+                        src={src}
+                        alt={`Outering FC content ${i + 1}`}
+                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                        <ZoomIn className="w-4 h-4 text-white" />
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
               </div>
             </motion.div>
 
@@ -537,7 +565,7 @@ export default function SocialMedia() {
             {CONTENT_SCREENSHOTS.map((src, i) => (
               <motion.button
                 key={i}
-                onClick={() => openLightbox(src)}
+                onClick={() => openLightbox(src, MK_SCREENSHOTS)}
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
