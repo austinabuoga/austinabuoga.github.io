@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
-import { BarChart2, Megaphone, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -88,7 +88,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-rose-500/15 border border-rose-500/25 flex items-center justify-center mb-6 group-hover:bg-rose-500/25 transition-colors duration-300">
-                  <Megaphone className="w-7 h-7 text-rose-400" />
+                  <img src="/logo-black.png" alt="A17" className="w-9 h-9 object-contain" />
                 </div>
                 <div className="text-[10px] text-rose-400/60 tracking-[0.25em] uppercase mb-2">Portfolio 01</div>
                 <h2 className="text-2xl font-black text-white mb-3 leading-tight">Social Media<br />Management</h2>
@@ -109,7 +109,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center mb-6 group-hover:bg-amber-500/25 transition-colors duration-300">
-                  <BarChart2 className="w-7 h-7 text-amber-400" />
+                  <img src="/logo-black.png" alt="A17" className="w-9 h-9 object-contain" />
                 </div>
                 <div className="text-[10px] text-amber-400/60 tracking-[0.25em] uppercase mb-2">Portfolio 02</div>
                 <h2 className="text-2xl font-black text-white mb-3 leading-tight">Data<br />Analysis</h2>
