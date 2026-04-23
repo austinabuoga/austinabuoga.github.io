@@ -38,7 +38,15 @@ export function MinimalLines() {
         <div className="group cursor-pointer flex flex-col pt-6 border-t-2 border-rose-500/40 hover:border-rose-500 transition-colors duration-400">
           <div className="flex items-start justify-between mb-auto">
             <div>
-              <span className="text-[9px] text-rose-400/40 group-hover:text-rose-400/70 tracking-[0.35em] uppercase font-mono transition-colors">01 / Social Media</span>
+              <span
+                className="inline-flex items-center gap-1.5 text-[9px] text-rose-400/50 group-hover:text-rose-300 tracking-[0.28em] uppercase font-mono px-3 py-1 rounded-full border border-rose-500/20 group-hover:border-rose-500/60 bg-rose-500/0 group-hover:bg-rose-500/10 transition-all duration-400"
+                style={{ boxShadow: "0 0 0 0 rgba(244,63,94,0)" }}
+                onMouseOver={e => (e.currentTarget.style.boxShadow = "0 0 14px 2px rgba(244,63,94,0.35)")}
+                onMouseOut={e => (e.currentTarget.style.boxShadow = "0 0 0 0 rgba(244,63,94,0)")}
+              >
+                <span className="w-1 h-1 rounded-full bg-rose-500/40 group-hover:bg-rose-400 transition-colors" />
+                01 / Social Media
+              </span>
               <h2 className="mt-3 text-[clamp(1.6rem,3.5vw,2.6rem)] font-black text-white leading-[1.0] tracking-tight">
                 Social<br />
                 <em className="not-italic text-rose-400 font-black">Media</em><br />
@@ -59,7 +67,15 @@ export function MinimalLines() {
         <div className="group cursor-pointer flex flex-col pt-6 border-t-2 border-amber-500/40 hover:border-amber-500 transition-colors duration-400">
           <div className="flex items-start justify-between mb-auto">
             <div>
-              <span className="text-[9px] text-amber-400/40 group-hover:text-amber-400/70 tracking-[0.35em] uppercase font-mono transition-colors">02 / Data Analysis</span>
+              <span
+                className="inline-flex items-center gap-1.5 text-[9px] text-amber-400/50 group-hover:text-amber-300 tracking-[0.28em] uppercase font-mono px-3 py-1 rounded-full border border-amber-500/20 group-hover:border-amber-500/60 bg-amber-500/0 group-hover:bg-amber-500/10 transition-all duration-400"
+                style={{ boxShadow: "0 0 0 0 rgba(245,158,11,0)" }}
+                onMouseOver={e => (e.currentTarget.style.boxShadow = "0 0 14px 2px rgba(245,158,11,0.35)")}
+                onMouseOut={e => (e.currentTarget.style.boxShadow = "0 0 0 0 rgba(245,158,11,0)")}
+              >
+                <span className="w-1 h-1 rounded-full bg-amber-500/40 group-hover:bg-amber-400 transition-colors" />
+                02 / Data Analysis
+              </span>
               <h2 className="mt-3 text-[clamp(1.6rem,3.5vw,2.6rem)] font-black text-white leading-[1.0] tracking-tight">
                 Data<br />
                 <em className="not-italic text-amber-400 font-black">Analysis</em><br />
